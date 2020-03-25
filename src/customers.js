@@ -8,9 +8,6 @@ import AddCustomer from "./AddCustomer";
 
 export default function Customers() {
   const [customers, setCustomers] = React.useState([]);
-  const [editopen, setEditopen] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
-  const [saveopen, setSaveopen] = React.useState(false);
 
   React.useEffect(() => {
     fetch("https://customerrest.herokuapp.com/api/customers")
@@ -34,7 +31,7 @@ export default function Customers() {
     })
       .then(res => fetchdata())
       .catch(err => console.error(err));
-    setSaveopen(true);
+    //setSaveopen(true);
   };
 
   const updateCustomer = (customer, link) => {
@@ -47,7 +44,7 @@ export default function Customers() {
     })
       .then(res => fetchdata())
       .catch(err => console.error(err));
-    setEditopen(true);
+    //setEditopen(true);
   };
 
   const deleteCustomer = link => {
@@ -55,7 +52,7 @@ export default function Customers() {
       fetch(link, { method: "DELETE" })
         .then(res => fetchdata())
         .catch(err => console.error(err));
-      setOpen(true);
+      //setOpen(true);
     }
   };
 

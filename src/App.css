@@ -28,6 +28,61 @@
   color: #61dafb;
 }
 
+#mainButton {
+  margin-right: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  background-color: #3f51b5; /* Green */
+  border: 2px solid #a6b3f7;
+  color: #a6b3f7;
+  padding: 7px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  text-shadow: 2px, 2px, #2a3882;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 2px #2a3882;
+  text-shadow: 1px 1px #2a3882;
+}
+
+#mainButton:hover {
+  background-color: #a6b3f7;
+  color: white;
+  
+  box-shadow: 6px 6px 8px #2a3882;
+  padding: 10px 13px;
+  text-shadow: none;
+}
+
+#mainButtonAdd {
+  margin-right: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+
+  border: 2px solid #3f51b5;
+  color: #3f51b5;
+  padding: 3px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  text-shadow: 2px, 2px, #2a3882;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 2px #bfc8f3;
+  text-shadow: 1px 1px #2a3882;
+  
+}
+
+#mainButtonAdd:hover {
+  background-color: #3f51b5;
+  color: white;
+  
+  box-shadow: 6px 6px 8px #bfc8f3;
+  padding: 6px 9px;
+  text-shadow: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
