@@ -3,9 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,8 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
-  },
-
+  }
 }));
 
 export default function AppHeader() {
@@ -27,18 +23,11 @@ export default function AppHeader() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            
-          </Typography>
-          <Button color="inherit">Login</Button>
+          <h1 style={{ textShadow: "3px 3px #2a3882" }}>Fake</h1>
+          <h1 style={{ color: "#8e9ef3", textShadow: "3px 3px #2a3882" }}>
+            Fitness
+          </h1>
+          <Typography variant="h6" className={classes.title}></Typography>
         </Toolbar>
       </AppBar>
     </div>

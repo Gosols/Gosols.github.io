@@ -1,82 +1,125 @@
 import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-
-const StyledTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white
-  },
-  body: {
-    fontSize: 14
-  }
-}))(TableCell);
-
-const StyledTableRow = withStyles(theme => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default
-    }
-  }
-}))(TableRow);
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700
-  }
-});
+import ReactTable from "react-table-6";
+import "react-table-6/react-table.css";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import EditCustomer from "./EditCustomer";
+import AddCustomer from "./AddCustomer";
 
 export default function Customers() {
-  const classes = useStyles();
   const [customers, setCustomers] = React.useState([]);
+  const [editopen, setEditopen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [saveopen, setSaveopen] = React.useState(false);
 
   React.useEffect(() => {
     fetch("https://customerrest.herokuapp.com/api/customers")
       .then(response => response.json())
-      .then(json => {
-        setCustomers(json.content);
-      });
+      .then(data => setCustomers(data.content));
   }, []);
+
+  const fetchdata = () => {
+    fetch("https://customerrest.herokuapp.com/api/customers")
+      .then(response => response.json())
+      .then(data => setCustomers(data.content));
+  };
+
+  const saveCustomer = customer => {
+    fetch("https://customerrest.herokuapp.com/api/customers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(customer)
+    })
+      .then(res => fetchdata())
+      .catch(err => console.error(err));
+    setSaveopen(true);
+  };
+
+  const updateCustomer = (customer, link) => {
+    fetch(link, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(customer)
+    })
+      .then(res => fetchdata())
+      .catch(err => console.error(err));
+    setEditopen(true);
+  };
+
+  const deleteCustomer = link => {
+    if (window.confirm(`Are you sure you want to delete this customer?`)) {
+      fetch(link, { method: "DELETE" })
+        .then(res => fetchdata())
+        .catch(err => console.error(err));
+      setOpen(true);
+    }
+  };
+
+  const columns = [
+    {
+      sortable: false,
+      filterable: false,
+      width: 100,
+      accessor: "links[0].href",
+      Cell: row => (
+        <div>
+          <div style={{ float: "left" }}>
+            <EditCustomer
+              updateCustomer={updateCustomer}
+              customer={row.original}
+            />
+          </div>
+          <div style={{ float: "left" }}>
+            <IconButton
+              variant="contained"
+              color="secondary"
+              size="small"
+              onClick={() => deleteCustomer(row.value)}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </div>
+        </div>
+      )
+    },
+    {
+      Header: "Firstname",
+      accessor: "firstname"
+    },
+    {
+      Header: "Lastname",
+      accessor: "lastname"
+    },
+    {
+      Header: "Address",
+      accessor: "streetaddress"
+    },
+    {
+      Header: "Postal Code",
+      accessor: "postcode"
+    },
+    {
+      Header: "City",
+      accessor: "city"
+    },
+    {
+      Header: "E-mail",
+      accessor: "email"
+    },
+    {
+      Header: "Phone",
+      accessor: "phone"
+    }
+  ];
 
   return (
     <div>
-      {" "}
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell align="right">Address</StyledTableCell>
-              <StyledTableCell align="right">Post code</StyledTableCell>
-              <StyledTableCell align="right">City</StyledTableCell>
-              <StyledTableCell align="right">Email</StyledTableCell>
-              <StyledTableCell align="right">Phone</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {customers.map((cust, index) => (
-              <StyledTableRow key={index}>
-                <StyledTableCell component="th" scope="row">
-                  {cust.firstname + " " + cust.lastname}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {cust.streetaddress}
-                </StyledTableCell>
-                <StyledTableCell align="right">{cust.postcode}</StyledTableCell>
-                <StyledTableCell align="right">{cust.city}</StyledTableCell>
-                <StyledTableCell align="right">{cust.email}</StyledTableCell>
-                <StyledTableCell align="right">{cust.phone}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>{" "}
+      <AddCustomer saveCustomer={saveCustomer} />
+      <ReactTable data={customers} columns={columns} />
     </div>
   );
 }
