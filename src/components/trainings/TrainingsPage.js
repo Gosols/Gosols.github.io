@@ -3,9 +3,9 @@ import ReactTable from "react-table-6";
 import "react-table-6/react-table.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import EditCustomer from "../customers/EditCustomer";
+import EditTraining from "./EditTraining";
 
-export default function Customers() {
+export default function Trainings() {
   const [trainings, setTrainings] = React.useState([]);
 
   React.useEffect(() => {
@@ -45,13 +45,14 @@ export default function Customers() {
       sortable: false,
       filterable: false,
       width: 75,
-      accessor: "links[0].href",
+      //accessor: "",
       Cell: row => (
         <div>
           <div style={{ float: "left" }}>
-            <EditCustomer
-              updateCustomer={updateTraining}
-              customer={row.original}
+            {console.log(row.original)}
+            <EditTraining
+              updateTraining={updateTraining}
+              training={row.original}
             />
           </div>
           <div style={{ float: "left" }}>
@@ -60,8 +61,8 @@ export default function Customers() {
               color="secondary"
               size="small"
               onClick={() => {
-                deleteTraining(row.value);
-                console.log(row.value);
+                deleteTraining(`https://customerrest.herokuapp.com/api/trainings/${row.original.id}`);
+                console.log(row.original.id)
               }}
             >
               <DeleteIcon />
