@@ -49,7 +49,7 @@
 #mainButton:hover {
   background-color: #a6b3f7;
   color: white;
-  
+
   box-shadow: 6px 6px 8px #2a3882;
   padding: 10px 13px;
   text-shadow: none;
@@ -71,16 +71,24 @@
   transition-duration: 0.3s;
   box-shadow: 2px 2px 2px #bfc8f3;
   text-shadow: 1px 1px #2a3882;
-  
 }
 
 #mainButtonAdd:hover {
   background-color: #3f51b5;
   color: white;
-  
+
   box-shadow: 6px 6px 8px #bfc8f3;
   padding: 6px 9px;
   text-shadow: none;
+}
+
+#addTraining {
+  color: #3f51b5;
+}
+
+#addIcon {
+  margin: 0px;
+  padding: 0px;
 }
 
 @keyframes App-logo-spin {

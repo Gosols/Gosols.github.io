@@ -5,9 +5,14 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import EditCustomer from "./EditCustomer";
 import AddCustomer from "./AddCustomer";
+import AddTraining from "../trainings/AddTraining";
+import moment from "moment"
 
 export default function Customers() {
   const [customers, setCustomers] = React.useState([]);
+
+  
+  console.log(moment("21-07-1995", "DD-MM-YYYY").toISOString())
 
   React.useEffect(() => {
     fetch("https://customerrest.herokuapp.com/api/customers")
@@ -28,6 +33,19 @@ export default function Customers() {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(customer)
+    })
+      .then(res => fetchdata())
+      .catch(err => console.error(err));
+    //setSaveopen(true);
+  };
+
+  const saveTraining = training => {
+    fetch("https://customerrest.herokuapp.com/api/trainings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(training)
     })
       .then(res => fetchdata())
       .catch(err => console.error(err));
@@ -84,6 +102,19 @@ export default function Customers() {
       )
     },
     {
+      filterable: false,
+      sortable: false,
+      Cell: row => (
+        <div>
+          <AddTraining
+            saveTraining={saveTraining}
+            customer={row.original.links[0].href}
+          />
+          <div>{console.log(row.original.links[0].href)}</div>
+        </div>
+      )
+    },
+    {
       Header: "Firstname",
       accessor: "firstname"
     },
@@ -115,7 +146,8 @@ export default function Customers() {
 
   return (
     <div>
-      <div style={{textAlign:"center", display:"inline-block"}}>
+      
+      <div style={{ textAlign: "center", display: "inline-block" }}>
         <h1>Customers</h1>
         <AddCustomer saveCustomer={saveCustomer} />
       </div>
