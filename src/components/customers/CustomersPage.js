@@ -60,7 +60,7 @@ export default function Customers() {
     {
       sortable: false,
       filterable: false,
-      width: 100,
+      width: 75,
       accessor: "links[0].href",
       Cell: row => (
         <div>
@@ -115,8 +115,11 @@ export default function Customers() {
 
   return (
     <div>
-      <AddCustomer saveCustomer={saveCustomer} />
-      <ReactTable data={customers} columns={columns} />
+      <div style={{textAlign:"center", display:"inline-block"}}>
+        <h1>Customers</h1>
+        <AddCustomer saveCustomer={saveCustomer} />
+      </div>
+      <ReactTable data={customers} columns={columns} filterable={true} />
     </div>
   );
 }
