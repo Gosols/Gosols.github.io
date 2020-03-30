@@ -7,6 +7,7 @@ import EditTraining from "./EditTraining";
 
 export default function Trainings() {
   const [trainings, setTrainings] = React.useState([]);
+  console.log(trainings);
 
   React.useEffect(() => {
     fetch("https://customerrest.herokuapp.com/gettrainings")
@@ -49,7 +50,6 @@ export default function Trainings() {
       Cell: row => (
         <div>
           <div style={{ float: "left" }}>
-            {console.log(row.original)}
             <EditTraining
               updateTraining={updateTraining}
               training={row.original}
@@ -61,8 +61,9 @@ export default function Trainings() {
               color="secondary"
               size="small"
               onClick={() => {
-                deleteTraining(`https://customerrest.herokuapp.com/api/trainings/${row.original.id}`);
-                console.log(row.original.id)
+                deleteTraining(
+                  `https://customerrest.herokuapp.com/api/trainings/${row.original.id}`
+                );
               }}
             >
               <DeleteIcon />

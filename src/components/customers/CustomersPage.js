@@ -6,13 +6,10 @@ import IconButton from "@material-ui/core/IconButton";
 import EditCustomer from "./EditCustomer";
 import AddCustomer from "./AddCustomer";
 import AddTraining from "../trainings/AddTraining";
-import moment from "moment"
+
 
 export default function Customers() {
   const [customers, setCustomers] = React.useState([]);
-
-  
-  console.log(moment("21-07-1995", "DD-MM-YYYY").toISOString())
 
   React.useEffect(() => {
     fetch("https://customerrest.herokuapp.com/api/customers")
@@ -110,7 +107,6 @@ export default function Customers() {
             saveTraining={saveTraining}
             customer={row.original.links[0].href}
           />
-          <div>{console.log(row.original.links[0].href)}</div>
         </div>
       )
     },
@@ -146,7 +142,6 @@ export default function Customers() {
 
   return (
     <div>
-      
       <div style={{ textAlign: "center", display: "inline-block" }}>
         <h1>Customers</h1>
         <AddCustomer saveCustomer={saveCustomer} />

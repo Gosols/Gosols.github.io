@@ -12,9 +12,10 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 export default function AddTraining(props) {
   const [open, setOpen] = React.useState(false);
-  const [time, setTime] = React.useState("");
   const [date, setDate] = React.useState("");
-  console.log(moment("21-07-1995", "DD-MM-YYYY").toISOString());
+  const [time, setTime] = React.useState("");
+
+  console.log(moment.utc().format())
 
   const [training, setTraining] = React.useState({
     date: "",
@@ -22,6 +23,8 @@ export default function AddTraining(props) {
     activity: "",
     customer: props.customer
   });
+
+  console.log(training);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,10 +41,24 @@ export default function AddTraining(props) {
   const dateInput = event => {
     setDate(event.target.value);
   };
+
   const timeInput = event => {
     setTime(event.target.value);
   };
+
   const addTraining = () => {
+    setDate(moment(date, "DD-MM-YYYY").format("YYYY-MM-DD"));
+    const dateAndTime = date + " " + time;
+
+    console.log("TÄSSÄ: " + moment.utc(dateAndTime, "YYYY-MM-DD HH:mm 0000").format());
+
+    setTraining([
+      {
+        ...training,
+        date: 0
+      }
+    ]);
+
     props.saveTraining(training);
     handleClose();
   };
@@ -86,7 +103,7 @@ export default function AddTraining(props) {
             margin="dense"
             name="date"
             onChange={e => dateInput(e)}
-            label={`Date (eg. ${moment().format("DD-MM-YYYY")})`}
+            label={`Date (eg. ${moment().format("DD.MM.YYYY")})`}
             fullWidth
           />
           <TextField
@@ -94,7 +111,7 @@ export default function AddTraining(props) {
             margin="dense"
             name="time"
             onChange={e => timeInput(e)}
-            label={`Time (eg. ${moment().format("hh:mm")})`}
+            label={`Time (eg. ${moment().format("HH:mm")})`}
             fullWidth
           />
         </DialogContent>
