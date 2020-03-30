@@ -15,8 +15,6 @@ export default function AddTraining(props) {
   const [date, setDate] = React.useState("");
   const [time, setTime] = React.useState("");
 
-  console.log(moment.utc().format())
-
   const [training, setTraining] = React.useState({
     date: "",
     duration: "",
@@ -48,18 +46,26 @@ export default function AddTraining(props) {
 
   const addTraining = () => {
     setDate(moment(date, "DD-MM-YYYY").format("YYYY-MM-DD"));
-    const dateAndTime = date + " " + time;
-
-    console.log("TÄSSÄ: " + moment.utc(dateAndTime, "YYYY-MM-DD HH:mm 0000").format());
+    const dateAndTime =
+      moment(date, "DD-MM-YYYY").format("YYYY-MM-DD") + " " + time;
+    const parsed = moment
+      .utc(dateAndTime, "YYYY-MM-DD HH:mm UTC")
+      .toISOString();
+    const säätö = parsed.split("Z")[0];
+    const lol = säätö + "+0000";
+    console.log("TÄMÄHH: " + lol);
 
     setTraining([
       {
         ...training,
-        date: 0
+        date: lol
       }
     ]);
 
     props.saveTraining(training);
+    console.log("------");
+    console.log(training);
+    console.log("------");
     handleClose();
   };
 

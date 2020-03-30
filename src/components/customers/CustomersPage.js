@@ -7,7 +7,6 @@ import EditCustomer from "./EditCustomer";
 import AddCustomer from "./AddCustomer";
 import AddTraining from "../trainings/AddTraining";
 
-
 export default function Customers() {
   const [customers, setCustomers] = React.useState([]);
 
