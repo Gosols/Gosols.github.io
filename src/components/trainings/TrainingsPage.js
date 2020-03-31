@@ -4,6 +4,7 @@ import "react-table-6/react-table.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import EditTraining from "./EditTraining";
+import moment from "moment";
 
 export default function Trainings() {
   const [trainings, setTrainings] = React.useState([]);
@@ -82,7 +83,10 @@ export default function Trainings() {
     },
     {
       Header: "Date",
-      accessor: "date"
+      accessor: "date",
+      Cell: row => (
+        <div>{moment(row.original.date).format("DD.MM.YYYY  (HH:mm)")}</div>
+      )
     },
     {
       Header: "Customer",

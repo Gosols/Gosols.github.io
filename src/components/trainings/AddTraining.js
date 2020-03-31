@@ -46,25 +46,19 @@ export default function AddTraining(props) {
 
   const addTraining = () => {
     setDate(moment(date, "DD-MM-YYYY").format("YYYY-MM-DD"));
-    const dateAndTime =
-      moment(date, "DD-MM-YYYY").format("YYYY-MM-DD") + " " + time;
+    const dateAndTime = date + " " + time;
     const parsed = moment
       .utc(dateAndTime, "YYYY-MM-DD HH:mm UTC")
       .toISOString();
-    const säätö = parsed.split("Z")[0];
-    const lol = säätö + "+0000";
-    console.log("TÄMÄHH: " + lol);
+    //const säätö = parsed.split("Z")[0];
+    //const lol = säätö + "+0000";
+    console.log("TÄMÄHH: " + parsed);
 
-    setTraining([
-      {
-        ...training,
-        date: lol
-      }
-    ]);
+    const newTraining = { ...training, date: parsed };
 
-    props.saveTraining(training);
+    props.saveTraining(newTraining);
     console.log("------");
-    console.log(training);
+    console.log(newTraining);
     console.log("------");
     handleClose();
   };
