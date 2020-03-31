@@ -22,8 +22,6 @@ export default function AddTraining(props) {
     customer: props.customer
   });
 
-  console.log(training);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -45,21 +43,21 @@ export default function AddTraining(props) {
   };
 
   const addTraining = () => {
-    setDate(moment(date, "DD-MM-YYYY").format("YYYY-MM-DD"));
-    const dateAndTime = date + " " + time;
+    const parsedDate = moment(date, "DD-MM-YYYY").format("YYYY-MM-DD");
+    console.log("Date: " + parsedDate)
+    const dateAndTime = parsedDate + " " + time;
+    console.log("dateAndTime: " + dateAndTime)
     const parsed = moment
-      .utc(dateAndTime, "YYYY-MM-DD HH:mm UTC")
+      (dateAndTime, "YYYY-MM-DD HH:mm")
       .toISOString();
+
     //const säätö = parsed.split("Z")[0];
     //const lol = säätö + "+0000";
-    console.log("TÄMÄHH: " + parsed);
+    console.log("parsed: " + parsed);
 
     const newTraining = { ...training, date: parsed };
 
     props.saveTraining(newTraining);
-    console.log("------");
-    console.log(newTraining);
-    console.log("------");
     handleClose();
   };
 

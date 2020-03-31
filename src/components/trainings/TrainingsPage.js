@@ -8,7 +8,6 @@ import moment from "moment";
 
 export default function Trainings() {
   const [trainings, setTrainings] = React.useState([]);
-  console.log(trainings);
 
   React.useEffect(() => {
     fetch("https://customerrest.herokuapp.com/gettrainings")
