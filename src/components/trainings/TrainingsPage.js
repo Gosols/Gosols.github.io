@@ -84,7 +84,7 @@ export default function Trainings() {
       Header: "Date",
       accessor: "date",
       Cell: row => (
-        <div>{moment(row.original.date).format("DD.MM.YYYY  (HH:mm)")}</div>
+      <div>{moment(row.original.date).format("DD.MM.YYYY")} <i>{moment(row.original.date).format("(HH:mm)")}</i></div>
       )
     },
     {

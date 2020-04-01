@@ -44,12 +44,10 @@ export default function AddTraining(props) {
 
   const addTraining = () => {
     const parsedDate = moment(date, "DD-MM-YYYY").format("YYYY-MM-DD");
-    console.log("Date: " + parsedDate)
+    console.log("Date: " + parsedDate);
     const dateAndTime = parsedDate + " " + time;
-    console.log("dateAndTime: " + dateAndTime)
-    const parsed = moment
-      (dateAndTime, "YYYY-MM-DD HH:mm")
-      .toISOString();
+    console.log("dateAndTime: " + dateAndTime);
+    const parsed = moment(dateAndTime, "YYYY-MM-DD HH:mm").toISOString();
 
     //const säätö = parsed.split("Z")[0];
     //const lol = säätö + "+0000";

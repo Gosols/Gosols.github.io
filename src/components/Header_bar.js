@@ -5,8 +5,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import GroupIcon from "@material-ui/icons/Group";
 import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
-import HomeIcon from '@material-ui/icons/Home';
-
+import HomeIcon from "@material-ui/icons/Home";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Customers from "./customers/CustomersPage";
+import Trainings from "./trainings/TrainingsPage";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,30 +23,49 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-
-export default function AppHeader() {
+export default function AppHeader(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <h1 style={{ textShadow: "3px 3px #2a3882" }}>Fake</h1>
-          <h1 style={{ color: "#a6b3f7", textShadow: "3px 3px #2a3882" }}>
-            Fitness
-          </h1>
-          <Typography variant="h6" className={classes.title}></Typography>
-          <button id="mainButton">
-            <HomeIcon />
-          </button>
-          <button id="mainButton">
-            <GroupIcon />
-          </button>
-          <button id="mainButton">
-            <FitnessCenterIcon />
-          </button>
-        </Toolbar>
-      </AppBar>
+      <Router forceRefresh={true}>
+        <AppBar position="static">
+          <Toolbar>
+            <h1 style={{ textShadow: "3px 3px #2a3882" }}>Fake</h1>
+            <h1 style={{ color: "#a6b3f7", textShadow: "3px 3px #2a3882" }}>
+              Fitness
+            </h1>
+            <Typography variant="h6" className={classes.title}></Typography>
+
+            <Link to="/">
+              <button id="mainButton">
+                <HomeIcon />
+              </button>
+            </Link>
+
+            <Link to="/customers">
+              <button id="mainButton">
+                <GroupIcon />
+              </button>
+            </Link>
+
+            <Link to="/trainings">
+              <button id="mainButton">
+                <FitnessCenterIcon />
+              </button>
+            </Link>
+          </Toolbar>
+        </AppBar>
+
+        <Switch>
+          <Route path="/customers">
+            <Customers />
+          </Route>
+          <Route path="/trainings">
+            <Trainings />
+          </Route>
+          <Route path="/">HOME</Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
