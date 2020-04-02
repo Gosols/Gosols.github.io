@@ -13,7 +13,7 @@ import Trainings from "./trainings/TrainingsPage";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    color: "white"
+    color: "black"
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function AppHeader(props) {
   const classes = useStyles();
+
+  
+
   return (
     <div className={classes.root}>
       <Router forceRefresh={true}>
@@ -34,22 +37,24 @@ export default function AppHeader(props) {
             <h1 style={{ color: "#a6b3f7", textShadow: "3px 3px #2a3882" }}>
               Fitness
             </h1>
-            <Typography variant="h6" className={classes.title}></Typography>
+            <Typography variant="h6" className={classes.title}>
+              
+            </Typography>
 
             <Link to="/">
-              <button id="mainButton">
+              <button id="mainButton" >
                 <HomeIcon />
               </button>
             </Link>
 
             <Link to="/customers">
-              <button id="mainButton">
+              <button id="mainButton" >
                 <GroupIcon />
               </button>
             </Link>
 
             <Link to="/trainings">
-              <button id="mainButton">
+              <button id="mainButton" >
                 <FitnessCenterIcon />
               </button>
             </Link>

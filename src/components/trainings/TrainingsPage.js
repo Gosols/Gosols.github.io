@@ -84,7 +84,10 @@ export default function Trainings() {
       Header: "Date",
       accessor: "date",
       Cell: row => (
-      <div>{moment(row.original.date).format("DD.MM.YYYY")} <i>{moment(row.original.date).format("(HH:mm)")}</i></div>
+        <div>
+          {moment(row.original.date).format("DD.MM.YYYY")}{" "}
+          <i>{moment(row.original.date).format("(HH:mm)")}</i>
+        </div>
       )
     },
     {
@@ -99,8 +102,11 @@ export default function Trainings() {
   ];
 
   return (
-    <div>
-      <ReactTable data={trainings} columns={columns} filterable={true} />
+    <div style={{ textAlign: "center"}}>
+      <div style={{maxWidth:"70%", margin: "auto"}}>
+        <h1 style={{textAlign:"left", marginBottom:"3px", color:"#3f51b5", textShadow:" 2px 2px  lightgrey"}}>Trainings</h1>
+        <ReactTable data={trainings} columns={columns} filterable={true} />
+      </div>
     </div>
   );
 }

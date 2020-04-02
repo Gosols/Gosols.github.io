@@ -140,12 +140,27 @@ export default function Customers() {
   ];
 
   return (
-    <div>
-      <div style={{ textAlign: "center", display: "inline-block" }}>
-        <h1>Customers</h1>
-        <AddCustomer saveCustomer={saveCustomer} />
+    <div style={{ textAlign: "center" }}>
+      <div style={{ maxWidth: "70%", margin: "auto" }}>
+        <div style={{ display: "flex" }}>
+          <div>
+            <h1
+              style={{
+                
+                marginBottom: "0px",
+                color: "#3f51b5",
+                textShadow: " 2px 2px  lightgrey"
+              }}
+            >
+              Customers
+            </h1>
+          </div>
+          <div>
+            <AddCustomer saveCustomer={saveCustomer} />
+          </div>
+        </div>
+        <ReactTable data={customers} columns={columns} filterable={true} />
       </div>
-      <ReactTable data={customers} columns={columns} filterable={true} />
     </div>
   );
 }

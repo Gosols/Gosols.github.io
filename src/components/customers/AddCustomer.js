@@ -39,11 +39,11 @@ export default function AddCustomer(props) {
   return (
     <div>
       <button
-        style={{ margin: "10px" }}
+        style={{ marginTop: "15px"}}
         onClick={handleClickOpen}
         id="mainButtonAdd"
       >
-        <AddIcon />
+        <AddIcon style={{width:"17px", height:"17px", padding:"0px"}}/>
       </button>
       <Dialog
         open={open}
