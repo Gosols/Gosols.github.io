@@ -47,7 +47,7 @@ export default function EditTraining(props) {
 
   return (
     <div>
-      <IconButton size="small" color="primary" onClick={handleClickOpen}>
+      <IconButton id="mainButtonEdit" size="small" color="primary" onClick={handleClickOpen}>
         <CreateIcon />
       </IconButton>
       <Dialog

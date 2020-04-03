@@ -48,18 +48,18 @@ export default function Trainings() {
       width: 75,
       //accessor: "",
       Cell: row => (
-        <div>
-          <div style={{ float: "left" }}>
+        <div style={{display:"flex"}}>
+          <div >
             <EditTraining
+            
               updateTraining={updateTraining}
               training={row.original}
             />
           </div>
-          <div style={{ float: "left" }}>
+          <div >
             <IconButton
-              variant="contained"
-              color="secondary"
-              size="small"
+            id="mainButtonDelete"
+
               onClick={() => {
                 deleteTraining(
                   `https://customerrest.herokuapp.com/api/trainings/${row.original.id}`
