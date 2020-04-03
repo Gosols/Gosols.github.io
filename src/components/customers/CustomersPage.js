@@ -77,15 +77,16 @@ export default function Customers() {
       width: 75,
       accessor: "links[0].href",
       Cell: row => (
-        <div>
-          <div style={{ float: "left" }}>
+        <div style={{ display: "flex"}}>
+          <div >
             <EditCustomer
               updateCustomer={updateCustomer}
               customer={row.original}
             />
           </div>
-          <div style={{ float: "left" }}>
+          <div >
             <IconButton
+              id="mainButtonDelete"
               variant="contained"
               color="secondary"
               size="small"
@@ -102,7 +103,7 @@ export default function Customers() {
       sortable: false,
       Cell: row => (
         <div>
-          <AddTraining
+          <AddTraining 
             saveTraining={saveTraining}
             customer={row.original.links[0].href}
           />
@@ -142,23 +143,21 @@ export default function Customers() {
   return (
     <div style={{ textAlign: "center" }}>
       <div style={{ maxWidth: "70%", margin: "auto" }}>
-        <div style={{ display: "flex" }}>
-          <div>
-            <h1
-              style={{
-                
-                marginBottom: "0px",
-                color: "#3f51b5",
-                textShadow: " 2px 2px  lightgrey"
-              }}
-            >
-              Customers
-            </h1>
-          </div>
-          <div>
-            <AddCustomer saveCustomer={saveCustomer} />
-          </div>
+        <div style={{ textAlign: "left", display:"flex"}}>
+          <h1
+            style={{
+              marginTop: "10px",
+              marginBottom: "0px",
+              marginRight: "15px",
+              color: "#3f51b5",
+              textShadow: " 2px 2px  lightgrey"
+            }}
+          >
+            Customers
+          </h1>
+          <AddCustomer saveCustomer={saveCustomer} />
         </div>
+
         <ReactTable data={customers} columns={columns} filterable={true} />
       </div>
     </div>

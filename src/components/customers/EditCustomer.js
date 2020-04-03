@@ -48,7 +48,9 @@ export default function EditCustomer(props) {
 
   return (
     <div>
-      <IconButton size="small" color="primary" onClick={handleClickOpen}>
+      <IconButton
+      id="mainButtonEdit"
+       onClick={handleClickOpen}>
         <CreateIcon />
       </IconButton>
       <Dialog

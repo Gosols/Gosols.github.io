@@ -1,46 +1,53 @@
 import React from "react";
-import {
-  Calendar,
-  momentLocalizer,
-  move,
-  Views,
-  Navigate,
-  components
-} from "react-big-calendar";
+import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
 
 export default function CalendarPage() {
   const localizer = momentLocalizer(moment);
 
-  const [trainingData, setData] = React.useState([]);
+  const [events, setEvents] = React.useState([]);
 
   React.useEffect(() => {
     fetch(`https://customerrest.herokuapp.com/gettrainings`)
       .then(response => response.json())
       .then(data => {
-        setData(data);
+        let eventData = data;
+        //console.log(eventData);
+
+        for (let i = 0; i < eventData.length; i++) {
+          eventData[i].date = new Date(eventData[i].date);
+          eventData[i].duration = new Date(moment(eventData[i].date).add(eventData[i].duration, "minutes").format())
+          eventData[i].customer =  `${eventData[i].customer.firstname}  ${eventData[i].customer.lastname}`
+          eventData[i].activity = `${eventData[i].customer} | ${eventData[i].activity}`
+
+          console.log(eventData[i]);
+        }
+        setEvents(eventData);
       });
   }, []);
 
-  const events = [
-    {
-      title: "My Event",
-      allDay: false,
-      start: new Date(2018, 0, 1, 10, 0),
-      end: new Date(2018, 0, 1, 14, 0)
-    }
-  ];
-
-  console.log("LUL: " + Date(moment().format()));
-
   return (
-    <div style={{ height: "700", maxWidth: "70%", margin: "auto" }}>
+    <div style={{maxWidth: "70%", margin: "auto" }} >
+<h1
+              style={{
+                textAlign:"left",
+                marginTop:"10px",
+                marginBottom: "10px",
+                color: "#3f51b5",
+                textShadow: " 2px 2px  lightgrey"
+              }}
+            >
+              Calendar
+            </h1>
+
       <Calendar
         localizer={localizer}
+        style={{ height: "700px"}}
         events={events}
-        views={["week", "month"]}
-        step={60}
+        titleAccessor="activity"
+        startAccessor="date"
+        endAccessor="duration"
       />
     </div>
   );

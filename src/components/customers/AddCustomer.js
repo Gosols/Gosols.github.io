@@ -4,7 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import AddIcon from "@material-ui/icons/Add";
 
 import DialogTitle from "@material-ui/core/DialogTitle";
 
@@ -38,12 +37,8 @@ export default function AddCustomer(props) {
 
   return (
     <div>
-      <button
-        style={{ marginTop: "15px"}}
-        onClick={handleClickOpen}
-        id="mainButtonAdd"
-      >
-        <AddIcon style={{width:"17px", height:"17px", padding:"0px"}}/>
+      <button onClick={handleClickOpen} id="mainButtonAdd">
+        Add New
       </button>
       <Dialog
         open={open}

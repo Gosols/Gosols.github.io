@@ -104,7 +104,8 @@ export default function Trainings() {
   return (
     <div style={{ textAlign: "center"}}>
       <div style={{maxWidth:"70%", margin: "auto"}}>
-        <h1 style={{textAlign:"left", marginBottom:"3px", color:"#3f51b5", textShadow:" 2px 2px  lightgrey"}}>Trainings</h1>
+        <h1 style={{textAlign:"left", marginTop:"10px",
+                marginBottom: "10px", color:"#3f51b5", textShadow:" 2px 2px  lightgrey"}}>Trainings</h1>
         <ReactTable data={trainings} columns={columns} filterable={true} />
       </div>
     </div>

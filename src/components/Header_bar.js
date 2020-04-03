@@ -9,6 +9,9 @@ import HomeIcon from "@material-ui/icons/Home";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Customers from "./customers/CustomersPage";
 import Trainings from "./trainings/TrainingsPage";
+import CalendarIcon from "@material-ui/icons/DateRangeRounded";
+import Calendar from "./Calendar"
+import Home from "./Home"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,8 +29,6 @@ const useStyles = makeStyles(theme => ({
 export default function AppHeader(props) {
   const classes = useStyles();
 
-  
-
   return (
     <div className={classes.root}>
       <Router forceRefresh={true}>
@@ -37,25 +38,29 @@ export default function AppHeader(props) {
             <h1 style={{ color: "#a6b3f7", textShadow: "3px 3px #2a3882" }}>
               Fitness
             </h1>
-            <Typography variant="h6" className={classes.title}>
-              
-            </Typography>
+            <Typography variant="h6" className={classes.title}></Typography>
 
             <Link to="/">
-              <button id="mainButton" >
+              <button id="mainButton">
                 <HomeIcon />
               </button>
             </Link>
 
             <Link to="/customers">
-              <button id="mainButton" >
+              <button id="mainButton">
                 <GroupIcon />
               </button>
             </Link>
 
             <Link to="/trainings">
-              <button id="mainButton" >
+              <button id="mainButton">
                 <FitnessCenterIcon />
+              </button>
+            </Link>
+
+            <Link to="/calendar">
+              <button id="mainButton">
+                <CalendarIcon />
               </button>
             </Link>
           </Toolbar>
@@ -68,7 +73,10 @@ export default function AppHeader(props) {
           <Route path="/trainings">
             <Trainings />
           </Route>
-          <Route path="/">HOME</Route>
+          <Route path="/calendar">
+            <Calendar />
+          </Route>
+          <Route path="/"><Home/></Route>
         </Switch>
       </Router>
     </div>

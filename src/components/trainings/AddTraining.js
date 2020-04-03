@@ -62,9 +62,10 @@ export default function AddTraining(props) {
   return (
     <div>
       <button
-        style={{ margin: "10px" }}
+        
+        style={{ margin: "0px"}}
         onClick={handleClickOpen}
-        id="addTraining"
+        id="mainButtonAddTraining"
       >
         <AddIcon id="addIcon" />
         <FitnessCenterIcon />
