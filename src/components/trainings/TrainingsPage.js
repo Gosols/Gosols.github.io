@@ -12,13 +12,15 @@ export default function Trainings() {
   React.useEffect(() => {
     fetch("https://customerrest.herokuapp.com/gettrainings")
       .then(response => response.json())
-      .then(data => setTrainings(data));
+      .then(data => setTrainings(data))
+      .catch(err => console.error(err));
   }, []);
 
   const fetchdata = () => {
     fetch("https://customerrest.herokuapp.com/gettrainings")
       .then(response => response.json())
-      .then(data => setTrainings(data));
+      .then(data => setTrainings(data))
+      .catch(err => console.error(err));
   };
 
   const updateTraining = (training, link) => {
