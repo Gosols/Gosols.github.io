@@ -12,39 +12,39 @@ export default function Customers() {
 
   React.useEffect(() => {
     fetch("https://customerrest.herokuapp.com/api/customers")
-      .then(response => response.json())
-      .then(data => setCustomers(data.content));
+      .then((response) => response.json())
+      .then((data) => setCustomers(data.content));
   }, []);
 
   const fetchdata = () => {
     fetch("https://customerrest.herokuapp.com/api/customers")
-      .then(response => response.json())
-      .then(data => setCustomers(data.content));
+      .then((response) => response.json())
+      .then((data) => setCustomers(data.content));
   };
 
-  const saveCustomer = customer => {
+  const saveCustomer = (customer) => {
     fetch("https://customerrest.herokuapp.com/api/customers", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(customer)
+      body: JSON.stringify(customer),
     })
-      .then(res => fetchdata())
-      .catch(err => console.error(err));
+      .then((res) => fetchdata())
+      .catch((err) => console.error(err));
     //setSaveopen(true);
   };
 
-  const saveTraining = training => {
+  const saveTraining = (training) => {
     fetch("https://customerrest.herokuapp.com/api/trainings", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(training)
+      body: JSON.stringify(training),
     })
-      .then(res => fetchdata())
-      .catch(err => console.error(err));
+      .then((res) => fetchdata())
+      .catch((err) => console.error(err));
     //setSaveopen(true);
   };
 
@@ -52,20 +52,20 @@ export default function Customers() {
     fetch(link, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(customer)
+      body: JSON.stringify(customer),
     })
-      .then(res => fetchdata())
-      .catch(err => console.error(err));
+      .then((res) => fetchdata())
+      .catch((err) => console.error(err));
     //setEditopen(true);
   };
 
-  const deleteCustomer = link => {
+  const deleteCustomer = (link) => {
     if (window.confirm(`Are you sure you want to delete this customer?`)) {
       fetch(link, { method: "DELETE" })
-        .then(res => fetchdata())
-        .catch(err => console.error(err));
+        .then((res) => fetchdata())
+        .catch((err) => console.error(err));
       //setOpen(true);
     }
   };
@@ -76,15 +76,15 @@ export default function Customers() {
       filterable: false,
       width: 75,
       accessor: "links[0].href",
-      Cell: row => (
-        <div style={{ display: "flex"}}>
-          <div >
+      Cell: (row) => (
+        <div style={{ display: "flex" }}>
+          <div>
             <EditCustomer
               updateCustomer={updateCustomer}
               customer={row.original}
             />
           </div>
-          <div >
+          <div>
             <IconButton
               id="mainButtonDelete"
               variant="contained"
@@ -96,61 +96,61 @@ export default function Customers() {
             </IconButton>
           </div>
         </div>
-      )
+      ),
     },
     {
       filterable: false,
       sortable: false,
-      Cell: row => (
+      Cell: (row) => (
         <div>
-          <AddTraining 
+          <AddTraining
             saveTraining={saveTraining}
             customer={row.original.links[0].href}
           />
         </div>
-      )
+      ),
     },
     {
       Header: "Firstname",
-      accessor: "firstname"
+      accessor: "firstname",
     },
     {
       Header: "Lastname",
-      accessor: "lastname"
+      accessor: "lastname",
     },
     {
       Header: "Address",
-      accessor: "streetaddress"
+      accessor: "streetaddress",
     },
     {
       Header: "Postal Code",
-      accessor: "postcode"
+      accessor: "postcode",
     },
     {
       Header: "City",
-      accessor: "city"
+      accessor: "city",
     },
     {
       Header: "E-mail",
-      accessor: "email"
+      accessor: "email",
     },
     {
       Header: "Phone",
-      accessor: "phone"
-    }
+      accessor: "phone",
+    },
   ];
 
   return (
     <div style={{ textAlign: "center" }}>
       <div style={{ maxWidth: "70%", margin: "auto" }}>
-        <div style={{ textAlign: "left", display:"flex"}}>
+        <div style={{ textAlign: "left", display: "flex" }}>
           <h1
             style={{
               marginTop: "10px",
               marginBottom: "0px",
               marginRight: "15px",
               color: "#3f51b5",
-              textShadow: " 2px 2px  lightgrey"
+              textShadow: " 2px 2px  lightgrey",
             }}
           >
             Customers

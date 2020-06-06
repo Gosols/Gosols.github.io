@@ -10,20 +10,20 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Customers from "./customers/CustomersPage";
 import Trainings from "./trainings/TrainingsPage";
 import CalendarIcon from "@material-ui/icons/DateRangeRounded";
-import Calendar from "./Calendar"
-import Home from "./Home"
+import Calendar from "./Calendar";
+import Home from "./Home";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    color: "black"
+    color: "black",
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 }));
 
 export default function AppHeader(props) {
@@ -76,7 +76,9 @@ export default function AppHeader(props) {
           <Route path="/calendar">
             <Calendar />
           </Route>
-          <Route path="/"><Home/></Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
       </Router>
     </div>

@@ -16,7 +16,7 @@ export default function EditTraining(props) {
     date: "",
     duration: "",
     activity: "",
-    customer: {}
+    customer: {},
   });
 
   const handleClickOpen = () => {
@@ -25,7 +25,7 @@ export default function EditTraining(props) {
       date: props.training.date,
       duration: props.training.duration,
       activity: props.training.activity,
-      customer: props.training.customer
+      customer: props.training.customer,
     });
     setOpen(true);
   };
@@ -34,7 +34,7 @@ export default function EditTraining(props) {
     setOpen(false);
   };
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     setTraining({ ...training, [event.target.name]: event.target.value });
   };
   const updateTraining = () => {
@@ -47,7 +47,12 @@ export default function EditTraining(props) {
 
   return (
     <div>
-      <IconButton id="mainButtonEdit" size="small" color="primary" onClick={handleClickOpen}>
+      <IconButton
+        id="mainButtonEdit"
+        size="small"
+        color="primary"
+        onClick={handleClickOpen}
+      >
         <CreateIcon />
       </IconButton>
       <Dialog
@@ -62,7 +67,7 @@ export default function EditTraining(props) {
             margin="dense"
             name="activity"
             value={training.activity}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="Activity"
             fullWidth
           />
@@ -71,7 +76,7 @@ export default function EditTraining(props) {
             margin="dense"
             name="duration"
             value={training.duration}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="Duration (min)"
             fullWidth
           />
@@ -80,7 +85,7 @@ export default function EditTraining(props) {
             margin="dense"
             name="date"
             value={training.date}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="Date"
             fullWidth
           />

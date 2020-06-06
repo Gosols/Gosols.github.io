@@ -19,7 +19,7 @@ export default function AddTraining(props) {
     date: "",
     duration: "",
     activity: "",
-    customer: props.customer
+    customer: props.customer,
   });
 
   const handleClickOpen = () => {
@@ -30,15 +30,15 @@ export default function AddTraining(props) {
     setOpen(false);
   };
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     setTraining({ ...training, [event.target.name]: event.target.value });
   };
 
-  const dateInput = event => {
+  const dateInput = (event) => {
     setDate(event.target.value);
   };
 
-  const timeInput = event => {
+  const timeInput = (event) => {
     setTime(event.target.value);
   };
 
@@ -62,8 +62,7 @@ export default function AddTraining(props) {
   return (
     <div>
       <button
-        
-        style={{ margin: "0px"}}
+        style={{ margin: "0px" }}
         onClick={handleClickOpen}
         id="mainButtonAddTraining"
       >
@@ -82,7 +81,7 @@ export default function AddTraining(props) {
             margin="dense"
             name="activity"
             value={training.activity}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="Activity"
             fullWidth
           />
@@ -91,7 +90,7 @@ export default function AddTraining(props) {
             margin="dense"
             name="duration"
             value={training.duration}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="Duration (min)"
             fullWidth
           />
@@ -99,7 +98,7 @@ export default function AddTraining(props) {
             autoFocus
             margin="dense"
             name="date"
-            onChange={e => dateInput(e)}
+            onChange={(e) => dateInput(e)}
             label={`Date (eg. ${moment().format("DD.MM.YYYY")})`}
             fullWidth
           />
@@ -107,7 +106,7 @@ export default function AddTraining(props) {
             autoFocus
             margin="dense"
             name="time"
-            onChange={e => timeInput(e)}
+            onChange={(e) => timeInput(e)}
             label={`Time (eg. ${moment().format("HH:mm")})`}
             fullWidth
           />

@@ -18,7 +18,7 @@ export default function EditCustomer(props) {
     postcode: "",
     city: "",
     email: "",
-    phone: ""
+    phone: "",
   });
 
   const handleClickOpen = () => {
@@ -29,7 +29,7 @@ export default function EditCustomer(props) {
       postcode: props.customer.postcode,
       city: props.customer.city,
       email: props.customer.email,
-      phone: props.customer.phone
+      phone: props.customer.phone,
     });
     setOpen(true);
   };
@@ -38,7 +38,7 @@ export default function EditCustomer(props) {
     setOpen(false);
   };
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     setCustomer({ ...customer, [event.target.name]: event.target.value });
   };
   const updateCustomer = () => {
@@ -48,9 +48,7 @@ export default function EditCustomer(props) {
 
   return (
     <div>
-      <IconButton
-      id="mainButtonEdit"
-       onClick={handleClickOpen}>
+      <IconButton id="mainButtonEdit" onClick={handleClickOpen}>
         <CreateIcon />
       </IconButton>
       <Dialog
@@ -65,7 +63,7 @@ export default function EditCustomer(props) {
             margin="dense"
             name="firstname"
             value={customer.firstname}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="First Name"
             fullWidth
           />
@@ -74,7 +72,7 @@ export default function EditCustomer(props) {
             margin="dense"
             name="lastname"
             value={customer.lastname}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="Last Name"
             fullWidth
           />
@@ -83,7 +81,7 @@ export default function EditCustomer(props) {
             margin="dense"
             name="streetaddress"
             value={customer.streetaddress}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="Address"
             fullWidth
           />
@@ -92,7 +90,7 @@ export default function EditCustomer(props) {
             margin="dense"
             name="postcode"
             value={customer.postcode}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="Postal code"
             fullWidth
           />
@@ -101,7 +99,7 @@ export default function EditCustomer(props) {
             margin="dense"
             name="city"
             value={customer.city}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="City"
             fullWidth
           />
@@ -110,19 +108,19 @@ export default function EditCustomer(props) {
             margin="dense"
             name="email"
             value={customer.email}
-            onChange={e => handleInputChange(e)}
+            onChange={(e) => handleInputChange(e)}
             label="E-mail"
             fullWidth
           />
           <TextField
-          autoFocus
-          margin="dense"
-          name="phone"
-          value={customer.phone}
-          onChange={e => handleInputChange(e)}
-          label="Phone"
-          fullWidth
-        />
+            autoFocus
+            margin="dense"
+            name="phone"
+            value={customer.phone}
+            onChange={(e) => handleInputChange(e)}
+            label="Phone"
+            fullWidth
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

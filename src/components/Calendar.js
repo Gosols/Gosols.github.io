@@ -1,7 +1,8 @@
 import React from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
+
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 export default function CalendarPage() {
   const localizer = momentLocalizer(moment);
@@ -10,16 +11,24 @@ export default function CalendarPage() {
 
   React.useEffect(() => {
     fetch(`https://customerrest.herokuapp.com/gettrainings`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         let eventData = data;
         //console.log(eventData);
 
         for (let i = 0; i < eventData.length; i++) {
           eventData[i].date = new Date(eventData[i].date);
-          eventData[i].duration = new Date(moment(eventData[i].date).add(eventData[i].duration, "minutes").format())
-          eventData[i].customer =  `${eventData[i].customer.firstname}  ${eventData[i].customer.lastname}`
-          eventData[i].activity = `${eventData[i].customer} | ${eventData[i].activity}`
+          eventData[i].duration = new Date(
+            moment(eventData[i].date)
+              .add(eventData[i].duration, "minutes")
+              .format()
+          );
+          eventData[
+            i
+          ].customer = `${eventData[i].customer.firstname}  ${eventData[i].customer.lastname}`;
+          eventData[
+            i
+          ].activity = `${eventData[i].customer} | ${eventData[i].activity}`;
 
           console.log(eventData[i]);
         }
@@ -28,22 +37,22 @@ export default function CalendarPage() {
   }, []);
 
   return (
-    <div style={{maxWidth: "70%", margin: "auto" }} >
-<h1
-              style={{
-                textAlign:"left",
-                marginTop:"10px",
-                marginBottom: "10px",
-                color: "#3f51b5",
-                textShadow: " 2px 2px  lightgrey"
-              }}
-            >
-              Calendar
-            </h1>
+    <div style={{ maxWidth: "70%", margin: "auto" }}>
+      <h1
+        style={{
+          textAlign: "left",
+          marginTop: "10px",
+          marginBottom: "10px",
+          color: "#3f51b5",
+          textShadow: " 2px 2px  lightgrey",
+        }}
+      >
+        Calendar
+      </h1>
 
       <Calendar
         localizer={localizer}
-        style={{ height: "700px"}}
+        style={{ height: "700px" }}
         events={events}
         titleAccessor="activity"
         startAccessor="date"
