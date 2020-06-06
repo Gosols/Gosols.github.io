@@ -46,19 +46,19 @@ export default function AppHeader(props) {
               </button>
             </Link>
 
-            <Link to="/customers">
+            <Link to="/final-task/customers">
               <button id="mainButton">
                 <GroupIcon />
               </button>
             </Link>
 
-            <Link to="/trainings">
+            <Link to="/final-task/trainings">
               <button id="mainButton">
                 <FitnessCenterIcon />
               </button>
             </Link>
 
-            <Link to="/calendar">
+            <Link to="/final-task/calendar">
               <button id="mainButton">
                 <CalendarIcon />
               </button>
@@ -67,16 +67,16 @@ export default function AppHeader(props) {
         </AppBar>
 
         <Switch>
-          <Route path="/customers">
+          <Route path="/final-task/customers">
             <Customers />
           </Route>
-          <Route path="/trainings">
+          <Route path="/final-task/trainings">
             <Trainings />
           </Route>
-          <Route path="/calendar">
+          <Route path="/final-task/calendar">
             <Calendar />
           </Route>
-          <Route path="/">
+          <Route path="/final-task">
             <Home />
           </Route>
         </Switch>
