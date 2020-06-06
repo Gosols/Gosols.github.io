@@ -40,7 +40,7 @@ export default function AppHeader(props) {
             </h1>
             <Typography variant="h6" className={classes.title}></Typography>
 
-            <Link to="/">
+            <Link to="/final-task">
               <button id="mainButton">
                 <HomeIcon />
               </button>
