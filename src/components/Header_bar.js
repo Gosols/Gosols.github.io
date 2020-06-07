@@ -40,25 +40,25 @@ export default function AppHeader(props) {
             </h1>
             <Typography variant="h6" className={classes.title}></Typography>
 
-            <Link to="/final-task">
+            <Link to="/">
               <button id="mainButton">
                 <HomeIcon />
               </button>
             </Link>
 
-            <Link to="/final-task/customers">
+            <Link to="/customers">
               <button id="mainButton">
                 <GroupIcon />
               </button>
             </Link>
 
-            <Link to="/final-task/trainings">
+            <Link to="/trainings">
               <button id="mainButton">
                 <FitnessCenterIcon />
               </button>
             </Link>
 
-            <Link to="/final-task/calendar">
+            <Link to="/calendar">
               <button id="mainButton">
                 <CalendarIcon />
               </button>
@@ -67,16 +67,16 @@ export default function AppHeader(props) {
         </AppBar>
 
         <Switch>
-          <Route path="/final-task/customers">
+          <Route path="/customers">
             <Customers />
           </Route>
-          <Route path="/final-task/trainings">
+          <Route path="/trainings">
             <Trainings />
           </Route>
-          <Route path="/final-task/calendar">
+          <Route path="/calendar">
             <Calendar />
           </Route>
-          <Route path="/final-task">
+          <Route path="/">
             <Home />
           </Route>
         </Switch>
