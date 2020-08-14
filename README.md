@@ -1,3 +1,6 @@
+
+This is a web app for a personal trainer. You can add customers, add new trainings as well as edit and delete them. Take a look!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
