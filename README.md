@@ -1,3 +1,4 @@
+https://fakefitness-app.herokuapp.com/
 
 This is a web app for a personal trainer. You can add customers, add new trainings as well as edit and delete them. Take a look!
 
